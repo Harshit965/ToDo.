@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>
+        <%= locals.title%>
+    </title>
+    <!-- required font awesome -->
+    <script src="https://kit.fontawesome.com/8dd1e9c649.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div >
+    
+<h1 id="heading">TODO APP</h1>
+<hr>
+<!-- creating form -->
+<form action="/create-list" method="POST"> 
+    
+<label class="size" for="text1">description</label>
+<br/>
+    <input  class="borders" id="text1"type="text"name="description" placeholder=" what do yo wonna do" required>
+    <hr>
+    <label class="size"for=date1">due date</label>
+    <br/> 
+    <input class="borders" id="date1" type="date" name="date" placeholder ="choose the date" required>
+    <hr>
+    <label class="size"for="categ">category</label>
+    <br/> 
+    <input class="borders" id="Categ" type="text" name="category" placeholder ="category of todo" required>
+    <hr>
+
+
+    <div class="cent">
+    <button  class="button"type="submit"> + ADD TASK</button>
+    </div>
+</div>
+<div>
+<ul>
+    <!-- running a for loop for the contenets of the array -->
+<% for (let i of todo_List){ %>
+<li>
+<p><%=  i.description  %></p>
+<p><%= i.date  %></p>
+<P><%= i.category %></P>
+<!-- creaing delete button -->
+<div class="delete-button">
+    <a href="/delete-list/?id=<%=i._id %>">
+        <i class="fas fa-trash-alt"></i>
+    </a>
+</div>
+</li>
+<% } %>
+</ul>
+
+
+
+
+</div>
+
+
+
+
+</form>
+
+
+</body>
+</html>
